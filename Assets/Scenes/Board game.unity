@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb7d38c2e133654a9eb9791ea08781c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazard: {fileID: 292997396}
+  myHazard: {fileID: 292997396}
 --- !u!1 &921166009
 GameObject:
   m_ObjectHideFlags: 0
