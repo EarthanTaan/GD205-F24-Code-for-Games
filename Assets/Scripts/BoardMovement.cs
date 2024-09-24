@@ -42,11 +42,11 @@ public class BoardMovement : MonoBehaviour
             transform.position += Vector3.back;
         }
 
-        //if (transform.position == myHazards.position)
-        //{
-        //    Debug.Log("BOOM");
-        //    transform.position = startPos;
-        //}
+        if (transform.position == myHazards.position)
+        {
+            Debug.Log("BOOM");
+            transform.position = startPos;
+        }
 
 
     }
