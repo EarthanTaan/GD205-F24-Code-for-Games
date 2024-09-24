@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BoardMovement : MonoBehaviour
 {
-    //public Transform myHazard; (rendered obsolete by the following array)
     public Transform[] myHazards;
+    public Transform[] walkables;
+    
 
-    //public int myInt = 5;
+    // 'Vector3' is a variable that contains a 3D vector coordinate in the form of (x, y, z).
     Vector3 startPos;
 
-    //Declare a new variable of datatype 'AudioSource' with a name:
+    // Declare a new variable of datatype 'AudioSource' with the name "dortSound":
     AudioSource dortSound;
 
     void Start()
@@ -25,7 +26,8 @@ public class BoardMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.position += Vector3.left;
+            //if (transform.position == walkables.position)
+                transform.position += Vector3.left;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -40,21 +42,12 @@ public class BoardMovement : MonoBehaviour
             transform.position += Vector3.back;
         }
 
-        //if (transform.position == myHazard.position)
+        //if (transform.position == myHazards.position)
         //{
         //    Debug.Log("BOOM");
         //    transform.position = startPos;
         //}
 
-        for (int howManyTimesLoopHasRun = 0; howManyTimesLoopHasRun < myHazards.Length; howManyTimesLoopHasRun++)
-        {
-            if (transform.position == myHazards[howManyTimesLoopHasRun].position)
-            {
-                //Take the AudioSource referred to by the variable and execute its Play function:
-                dortSound.Play();
-                Debug.Log("BOOM!");
-                transform.position = startPos;
-            }
-        }
+
     }
 }
