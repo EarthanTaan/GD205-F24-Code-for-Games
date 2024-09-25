@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using TMPro;
 using UnityEngine;
 
 public class BoardMovement : MonoBehaviour
 {
     public Transform[] myHazards;
-    public Transform[] walkables;
-    
+
     // 'Vector3' is a variable that contains a 3D vector coordinate in the form of (x, y, z).
     Vector3 startPos;
 
@@ -27,43 +27,19 @@ public class BoardMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            for (int i = 0; i < walkables.Length; i++)
-            {
-                if (transform.position + new Vector3(-1, -0.75f, 0) == walkables[i].position)
-                {
-                    transform.position += Vector3.left;
-                }
-            }
+            transform.position += Vector3.left;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            for (int i = 0; i < walkables.Length; i++)
-            {
-                if (transform.position + new Vector3(1, -0.75f, 0) == walkables[i].position)
-                {
-                    transform.position += Vector3.right;
-                }
-            }
+            transform.position += Vector3.right;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            for (int i = 0; i < walkables.Length; i++)
-            {
-                if (transform.position + new Vector3(0, -0.75f, 1) == walkables[i].position)
-                {
-                    transform.position += Vector3.forward;
-                }
-            }
+            transform.position += Vector3.forward;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            for (int i = 0; i < walkables.Length; i++)
-            {
-                if (transform.position + new Vector3(0, -0.75f, -1) == walkables[i].position)
-                {
-                    transform.position += Vector3.back;
-                }
-            }
+            transform.position += Vector3.back;
         }
 
         for (int i = 0; i < myHazards.Length; i++) {
