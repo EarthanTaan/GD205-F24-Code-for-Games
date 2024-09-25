@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoardMovement : MonoBehaviour
 {
     public Transform[] myHazards;
+    public Transform[] walkables;
 
     // 'Vector3' is a variable that contains a 3D vector coordinate in the form of (x, y, z).
     Vector3 startPos;
