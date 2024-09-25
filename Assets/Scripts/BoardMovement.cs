@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class BoardMovement : MonoBehaviour
@@ -7,7 +8,6 @@ public class BoardMovement : MonoBehaviour
     public Transform[] myHazards;
     public Transform[] walkables;
     
-
     // 'Vector3' is a variable that contains a 3D vector coordinate in the form of (x, y, z).
     Vector3 startPos;
 
@@ -17,6 +17,7 @@ public class BoardMovement : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+
         //Assign variable the value taken from the AudioSource Component attached to 'this' GameObject:
         dortSound = GetComponent<AudioSource>();
     }
@@ -26,28 +27,53 @@ public class BoardMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //if (transform.position == walkables.position)
-                transform.position += Vector3.left;
+            for (int i = 0; i < walkables.Length; i++)
+            {
+                if (transform.position + new Vector3(-1, -0.75f, 0) == walkables[i].position)
+                {
+                    transform.position += Vector3.left;
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.position += Vector3.right;
+            for (int i = 0; i < walkables.Length; i++)
+            {
+                if (transform.position + new Vector3(1, -0.75f, 0) == walkables[i].position)
+                {
+                    transform.position += Vector3.right;
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.position += Vector3.forward;
+            for (int i = 0; i < walkables.Length; i++)
+            {
+                if (transform.position + new Vector3(0, -0.75f, 1) == walkables[i].position)
+                {
+                    transform.position += Vector3.forward;
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.position += Vector3.back;
+            for (int i = 0; i < walkables.Length; i++)
+            {
+                if (transform.position + new Vector3(0, -0.75f, -1) == walkables[i].position)
+                {
+                    transform.position += Vector3.back;
+                }
+            }
         }
 
-        if (transform.position == myHazards.position)
-        {
-            Debug.Log("BOOM");
-            transform.position = startPos;
+        for (int i = 0; i < myHazards.Length; i++) {
+            if (transform.position == myHazards[i].position)
+            {
+                dortSound.Play();
+                Debug.Log("BOOM");
+                transform.position = startPos;
+            }
         }
-
 
     }
 }
