@@ -5,26 +5,29 @@ using UnityEngine;
 public class SaucerBehavior : MonoBehaviour
 {
     Rigidbody rb;
+    public float acc = 0.5f;
+    public float torque;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called per time rather than frame
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, -1, 0);
+            rb.AddTorque(0, -1, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0, 1, 0);
+            rb.AddTorque(0, 1, 0);
         }
-        //if (Input.GetKey(KeyCode.W)) 
-        //{
-        //    rb.velocity += 1f;
-        //}
+        if (Input.GetKey(KeyCode.W))
+        {
+            rb.Y().AddForce(0, 0, acc);
+        }
     }
 }
