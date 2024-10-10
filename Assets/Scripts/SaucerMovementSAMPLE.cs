@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class SaucerMovement : MonoBehaviour
     {
         //assign RB using GetComponent (the rigidbody attached to this gameobject)
         rb = GetComponent<Rigidbody>();
+        Physics.IgnoreCollision(rb.GetComponent<Collider>(), rb.GetComponent<Collider>(), true);
     }
 
     // FixedUpdate is called once per standard interval instead of per frame
