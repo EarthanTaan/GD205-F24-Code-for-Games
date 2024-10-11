@@ -31,10 +31,10 @@ public class SaucerMovement : MonoBehaviour
             rb.AddRelativeForce(0f, 0f, -acc, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.A)){
-            rb.AddRelativeTorque(0f, -acc * 0.33f, 0f, ForceMode.Impulse);
+            rb.AddRelativeTorque(0f, -acc * 0.1f, 0f, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.D)){
-            rb.AddRelativeTorque(0f, acc * 0.33f, 0f, ForceMode.Impulse);
+            rb.AddRelativeTorque(0f, acc * 0.1f, 0f, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.E)){
             rb.AddRelativeForce(acc, 0f, 0f, ForceMode.Impulse);
@@ -44,7 +44,8 @@ public class SaucerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            
+            rb.velocity *= 0.95f;
+            rb.angularVelocity *= 0.95f;
         }
     }
 
