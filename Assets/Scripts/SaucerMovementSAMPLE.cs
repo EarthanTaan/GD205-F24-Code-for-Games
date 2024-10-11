@@ -9,7 +9,7 @@ public class SaucerMovement : MonoBehaviour
     Rigidbody rb;
 
     //make a new public variable to change our acceleration force
-    public float acc = 0.5f;
+    public float acc = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +25,26 @@ public class SaucerMovement : MonoBehaviour
         //same as our previous script except using getkey since we want it to apply continuously if its being pressed down, not just for one frame
         if (Input.GetKey(KeyCode.W)){
             //we are using the AddForce method in the appropriate direction using our variable
-            rb.AddForce(0f, 0f, acc);
+            rb.AddRelativeForce(0f, 0f, acc, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.S)){
-            rb.AddForce(0f, 0f, -acc);
+            rb.AddRelativeForce(0f, 0f, -acc, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.A)){
-            rb.AddForce(-acc, 0f, 0f);
+            rb.AddRelativeTorque(0f, -acc * 0.33f, 0f, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.D)){
-            rb.AddForce(acc, 0f, 0f);
+            rb.AddRelativeTorque(0f, acc * 0.33f, 0f, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.E)){
-            rb.AddForce(0f, acc, 0f);
+            rb.AddRelativeForce(acc, 0f, 0f, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.Q)){
-            rb.AddForce(0f, -acc, 0f);
+            rb.AddRelativeForce(-acc, 0f, 0f, ForceMode.Impulse);
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            
         }
     }
 
