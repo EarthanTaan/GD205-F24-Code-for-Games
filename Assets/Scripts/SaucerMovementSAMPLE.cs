@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class SaucerMovement : MonoBehaviour
 {
     //create a new Rigidbody called rb to manipulate in our script
     Rigidbody rb;
 
+
     //make a new public variable to change our acceleration force
-    public float acc = 3f;
+    public float acc = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,7 @@ public class SaucerMovement : MonoBehaviour
         //assign RB using GetComponent (the rigidbody attached to this gameobject)
         rb = GetComponent<Rigidbody>();
         Physics.IgnoreCollision(rb.GetComponent<Collider>(), rb.GetComponent<Collider>(), true);
+       
     }
 
     // FixedUpdate is called once per standard interval instead of per frame
@@ -31,21 +35,35 @@ public class SaucerMovement : MonoBehaviour
             rb.AddRelativeForce(0f, 0f, -acc, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.A)){
-            rb.AddRelativeTorque(0f, -acc * 0.1f, 0f, ForceMode.Impulse);
+            rb.AddRelativeTorque(0f, -acc * 0.5f, 0f, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.D)){
-            rb.AddRelativeTorque(0f, acc * 0.1f, 0f, ForceMode.Impulse);
+            rb.AddRelativeTorque(0f, acc * 0.5f, 0f, ForceMode.Impulse);
         }
-        if (Input.GetKey(KeyCode.E)){
-            rb.AddRelativeForce(acc, 0f, 0f, ForceMode.Impulse);
+        if (Input.GetKey(KeyCode.F)){
+            rb.AddRelativeForce(0f, -acc, 0f, ForceMode.Impulse);
         }
-        if (Input.GetKey(KeyCode.Q)){
-            rb.AddRelativeForce(-acc, 0f, 0f, ForceMode.Impulse);
+        if (Input.GetKey(KeyCode.R)){
+            rb.AddRelativeForce(0f, acc, 0f, ForceMode.Impulse);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            rb.AddRelativeTorque(0f, 0f, acc * 3);
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            rb.AddRelativeTorque(0f, 0f, -acc * 3);
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.velocity *= 0.95f;
-            rb.angularVelocity *= 0.95f;
+            rb.drag = 5f;
+            rb.angularDrag = 5f;
+            //This is where a leveling-out function would go if I could figure out how to translate to and from Quaternions AT ALL.
+        }
+        else
+        {
+            rb.drag = 0f;
+            rb.angularDrag = 0.05f;
         }
     }
 
