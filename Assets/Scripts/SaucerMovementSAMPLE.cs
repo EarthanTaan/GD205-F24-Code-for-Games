@@ -35,10 +35,10 @@ public class SaucerMovement : MonoBehaviour
             rb.AddRelativeForce(0f, 0f, -acc, ForceMode.Impulse);
         }
         if (Input.GetKey(KeyCode.A)){
-            rb.AddRelativeTorque(0f, -acc * 0.5f, 0f, ForceMode.Impulse);
+            rb.AddRelativeTorque(0f, -acc * 2, 0f, ForceMode.Force);
         }
         if (Input.GetKey(KeyCode.D)){
-            rb.AddRelativeTorque(0f, acc * 0.5f, 0f, ForceMode.Impulse);
+            rb.AddRelativeTorque(0f, acc * 2, 0f, ForceMode.Force);
         }
         if (Input.GetKey(KeyCode.F)){
             rb.AddRelativeForce(0f, -acc, 0f, ForceMode.Impulse);
@@ -57,7 +57,7 @@ public class SaucerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rb.drag = 5f;
-            rb.angularDrag = 5f;
+            rb.angularDrag = 10f;
             //This is where a leveling-out function would go if I could figure out how to translate to and from Quaternions AT ALL.
         }
         else
