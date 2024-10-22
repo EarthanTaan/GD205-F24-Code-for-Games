@@ -56,14 +56,14 @@ public class SaucerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.drag = 5f;
-            rb.angularDrag = 10f;
+            rb.linearDamping = 5f;
+            rb.angularDamping = 10f;
             //This is where a leveling-out function would go if I could figure out how to translate to and from Quaternions AT ALL.
         }
         else
         {
-            rb.drag = 0f;
-            rb.angularDrag = 0.05f;
+            rb.linearDamping = 0f;
+            rb.angularDamping = 0.05f;
         }
     }
 

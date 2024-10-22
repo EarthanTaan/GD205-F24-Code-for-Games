@@ -20,13 +20,16 @@ public class OpticBlast : MonoBehaviour
 
         if (Physics.Raycast(laser, out beamStrikeReport))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (beamStrikeReport.rigidbody.gameObject.tag == "orb")
             {
-                Destroy(beamStrikeReport.collider.gameObject);
-            }
-            else if (Input.GetMouseButtonDown(1) && beamStrikeReport.rigidbody)
-            {
-                beamStrikeReport.rigidbody.AddExplosionForce(500f, beamStrikeReport.point, 1000f);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    beamStrikeReport.rigidbody.AddExplosionForce(-500f, beamStrikeReport.point, -1000f);
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    beamStrikeReport.rigidbody.AddExplosionForce(500f, beamStrikeReport.point, 1000f);
+                }
             }
         }
 
