@@ -9,26 +9,27 @@ public class OpticBlast : MonoBehaviour
     void Start()
     {
         
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray laser = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray beam = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit beamStrikeReport = new RaycastHit();
-
-        if (Physics.Raycast(laser, out beamStrikeReport))
+        
+        if (Physics.Raycast(beam, out beamStrikeReport))
         {
-            if (beamStrikeReport.rigidbody.gameObject.tag == "orb")
+            if (beamStrikeReport.rigidbody)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(1))
                 {
-                    beamStrikeReport.rigidbody.AddExplosionForce(-500f, beamStrikeReport.point, -1000f);
+                    beamStrikeReport.rigidbody.AddExplosionForce(-3000f, beamStrikeReport.point, 10f);
                 }
-                else if (Input.GetMouseButtonDown(1))
+                else if (Input.GetMouseButtonDown(0))
                 {
-                    beamStrikeReport.rigidbody.AddExplosionForce(500f, beamStrikeReport.point, 1000f);
+                    beamStrikeReport.rigidbody.AddExplosionForce(3000f, beamStrikeReport.point, 10f);
                 }
             }
         }
