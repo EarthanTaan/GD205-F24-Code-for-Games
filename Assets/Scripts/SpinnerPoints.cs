@@ -1,9 +1,10 @@
+using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpinnerPoints : MonoBehaviour
 {
-    int pointstotal;
+    public int pointstotal;
     void OnCollisionEnter(Collision spinnerHit)
     {
         if (spinnerHit.rigidbody)
