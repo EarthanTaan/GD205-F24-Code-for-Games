@@ -3,24 +3,16 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    Vector3 cameraOffset;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //cameraOffset = new Vector3();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //cameraOffset = Quaternion.AngleAxis(Input.GetAxis("Mouse X"), Vector3.up) * cameraOffset;
-
-        //Camera.main.transform.position = gameObject.transform.position + cameraOffset;
-
-        //Camera.main.transform.LookAt(transform.position);
-
-        //Camera.main.transform.position = cameraOffset;
 
         GetComponent<Animator>().SetFloat("Forward", 0f);
         GetComponent<Animator>().SetFloat("Left", 0f);
