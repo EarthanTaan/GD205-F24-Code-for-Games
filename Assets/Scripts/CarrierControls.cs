@@ -8,8 +8,7 @@ public class CarrierControls : MonoBehaviour
     Quaternion righted = new Quaternion();
 
     //make a new public variable to change our acceleration force
-    public float acc = 3f;
-    public float speed = 50f;
+    public float thrust = 50f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,15 +29,15 @@ public class CarrierControls : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(0f, 0f, acc, ForceMode.Force);
+            rb.AddForce(0f, 0f, thrust, ForceMode.Force);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(0f, 0f, -acc, ForceMode.Force);
+            rb.AddForce(0f, 0f, -thrust, ForceMode.Force);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(-acc, 0f, 0f, ForceMode.Force);
+            rb.AddForce(-thrust, 0f, 0f, ForceMode.Force);
                 if (rb.rotation.z < 30f)
                 {
                     rb.AddTorque(0f, 0f, 0.5f, ForceMode.Force);    //for some reason, this line of code is also giving me the same behavior on the opposite side. If it ain't broke I won't fix it.
@@ -46,7 +45,7 @@ public class CarrierControls : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(acc, 0f, 0f, ForceMode.Force);
+            rb.AddForce(thrust, 0f, 0f, ForceMode.Force);
             rb.AddTorque(0f, 0f, -0.5f);
         }
     }
