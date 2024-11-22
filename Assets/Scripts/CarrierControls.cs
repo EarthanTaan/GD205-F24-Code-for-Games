@@ -22,30 +22,30 @@ public class CarrierControls : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if (rb.rotation.z != 0f && !Input.anyKeyDown)
-        //{
+        if (rb.rotation.z != 0f && !Input.anyKeyDown)
+        {
             rb.rotation = Quaternion.Slerp(rb.rotation, righted, 0.04f);
-        //}
+        }
 
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(0f, 0f, thrust, ForceMode.Force);
+            rb.AddForce(0f, 0f, thrust, ForceMode.Acceleration);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(0f, 0f, -thrust, ForceMode.Force);
+            rb.AddForce(0f, 0f, -thrust, ForceMode.Acceleration);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(-thrust, 0f, 0f, ForceMode.Force);
-                if (rb.rotation.z < 30f)
+            rb.AddForce(-thrust, 0f, 0f, ForceMode.Acceleration);
+                if (rb.transform.eulerAngles.z < 30f)
                 {
                     rb.AddTorque(0f, 0f, 0.5f, ForceMode.Force);    //for some reason, this line of code is also giving me the same behavior on the opposite side. If it ain't broke I won't fix it.
                 }
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(thrust, 0f, 0f, ForceMode.Force);
+            rb.AddForce(thrust, 0f, 0f, ForceMode.Acceleration);
             rb.AddTorque(0f, 0f, -0.5f);
         }
     }

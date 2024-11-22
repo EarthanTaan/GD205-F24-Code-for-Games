@@ -212,46 +212,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &545244310 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 22f255641cef00e499bef221bd019ce7, type: 3}
-  m_PrefabInstance: {fileID: 659947460}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &545244313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545244310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f3ca18aa9cb07046aae1fe08da96f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
---- !u!195 &545244314
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545244310}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &659947460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,13 +307,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 22f255641cef00e499bef221bd019ce7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 545244313}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 22f255641cef00e499bef221bd019ce7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 545244314}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f255641cef00e499bef221bd019ce7, type: 3}
 --- !u!4 &659947461 stripped
 Transform:
@@ -483,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961ed0a267553474aa9ce51e539869de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 3
+  thrust: 25
 --- !u!54 &1079914512
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -571,7 +525,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 87
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -597,13 +551,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242190254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46840793, y: -0, z: -0, w: 0.8835123}
-  m_LocalPosition: {x: -7.999999, y: 76.57001, z: -74.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.47844577, y: -0, z: -0, w: 0.8781171}
+  m_LocalPosition: {x: -7.9999995, y: 56.7, z: -61.7}
+  m_LocalScale: {x: 14.056751, y: 1, z: 0.6934229}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 55.862, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 57.168, y: 0, z: 0}
 --- !u!1773428102 &1242190258
 ParentConstraint:
   m_ObjectHideFlags: 0
@@ -614,12 +568,12 @@ ParentConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: -4.4499984, y: 47.7, z: -46.3}
-  m_RotationAtRest: {x: 55.86209, y: 0, z: 0}
+  m_TranslationAtRest: {x: -7.9999995, y: 56.7, z: -61.7}
+  m_RotationAtRest: {x: 57.16786, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: -21.119999, y: 38.370003, z: 0.0000014305115}
+  - {x: -8, y: 18.5, z: 0}
   m_RotationOffsets:
-  - {x: 55.86208, y: 90, z: 0}
+  - {x: 57.167866, y: 90, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -627,7 +581,7 @@ ParentConstraint:
   m_AffectRotationY: 0
   m_AffectRotationZ: 0
   m_Active: 1
-  m_IsLocked: 1
+  m_IsLocked: 0
   m_Sources:
   - sourceTransform: {fileID: 1079914510}
     weight: 1
