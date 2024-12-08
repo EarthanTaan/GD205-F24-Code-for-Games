@@ -40,8 +40,8 @@ public class CarrierControls : MonoBehaviour
             rb.AddForce(-thrust, 0f, 0f, ForceMode.Acceleration);
                 if (rb.transform.eulerAngles.z < 30f)
                 {
-                    rb.transform.eulerAngles.z = Mathf.Lerp(rb.transform.eulerAngles.z, 30f, 0.5f); //trying to fix the roll issue here without mucking about in physics
-                }
+                    rb.transform.eulerAngles.Set(rb.transform.eulerAngles.x, rb.transform.eulerAngles.y, Mathf.Lerp(rb.transform.eulerAngles.z, 30f, 0.5f));
+                }   //I don't know what's going on with this code, but it seems to work so I'm just going to stop touching it!
         }
         if (Input.GetKey(KeyCode.D))
         {
