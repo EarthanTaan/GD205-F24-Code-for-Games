@@ -5,7 +5,7 @@ public class CarrierControls : MonoBehaviour
 {
     //create a new Rigidbody called rb to manipulate in our script
     Rigidbody rb;
-    Quaternion righted = new Quaternion();
+    Quaternion righted;
 
     //make a new public variable to change our acceleration force
     public float thrust = 50f;
