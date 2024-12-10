@@ -22,6 +22,8 @@ public class CarrierControls : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        transform.Translate(0,0,Time.deltaTime);
+
         if (rb.rotation.z != 0f && !Input.anyKeyDown)
         {
             rb.rotation = Quaternion.Slerp(rb.rotation, righted, 0.04f);
