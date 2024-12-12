@@ -5,7 +5,7 @@ public class CarrierControls : MonoBehaviour
 {
     //create a new Rigidbody called rb to manipulate in our script
     Rigidbody rb;
-    Vector3 righted;
+    Quaternion righted;
 
     //make a new public variable to change our acceleration force (this becomes accessible from the editor side, in the component)
     public float thrust = 50f;
@@ -15,7 +15,7 @@ public class CarrierControls : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        righted = transform.eulerAngles;        //grab the Vector3 for when the ship is at neutral rotation
+        righted = transform.rotation;        //grab the Vector3 for when the ship is at neutral rotation
     }
 
     void FixedUpdate()
@@ -24,10 +24,13 @@ public class CarrierControls : MonoBehaviour
 
         if (transform.eulerAngles.z != 0f && !Input.anyKeyDown)     //if the z-axis rotation is anything but neutral, and no key is being pressed:
         {
-            Vector3 unRighted = transform.eulerAngles;
-            unRighted.z = Mathf.LerpAngle(unRighted.z, righted.z, Time.deltaTime * 2f);
-            transform.eulerAngles = unRighted;      //lerp back to 'righted'
-            
+            Vector3 recalibrate = transform.position;
+            recalibrate.y = Mathf.Lerp(recalibrate.y, 0, Time.deltaTime * 2f);
+            transform.position = recalibrate;
+
+            Quaternion unRighted = transform.rotation;      //make a copy of the rotation
+            unRighted = Quaternion.Slerp(unRighted, righted, Time.deltaTime * 2f);        //adjust the copy
+            transform.rotation = unRighted;     //shove it back in
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -44,11 +47,6 @@ public class CarrierControls : MonoBehaviour
             Vector3 leftRoll = transform.eulerAngles;
             leftRoll.z = Mathf.LerpAngle(leftRoll.z, roll, Time.deltaTime * 3f);
             transform.eulerAngles = leftRoll;
-            //if (transform.eulerAngles.z < 30f)
-            //{
-            //    transform.Rotate(transform.position.x, transform.position.y, transform.position.z + roll);        //I want to roll the ship to the left as it banks leftward, but I can't find he magic words.
-                    //gotta abandon this bit, it's not working and it's not vital. Code not deleted for posterity and maybe later I'll understand what happened and be able to fix it.
-            //}
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -66,4 +64,11 @@ public class CarrierControls : MonoBehaviour
 
         }
     }
-}
+    // Custom functions and classes and stuff goes here: Inside MonoBehavior but outside the other functions (Start and Update).
+
+    /* Write a function here that will handle the intro cutscene, showing the space station wreckage.
+     * After panning past the wreck, move the player's ship onto the screen, and turn control over to the input controls.
+     * Ideally, then enemies would begin spawning, but I have no clue how to even begin setting THAT up. Set up a custom class maybe?
+    */
+
+} // This line is outside the scope of the MonoBehavior; don't code here or below. This is the bottom of the script.
