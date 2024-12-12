@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 //  Based on a tutorial video I found - This script takes a looped image and scrolls it across an object to give the impression of motion.
@@ -13,6 +14,8 @@ public class bg_scroll : MonoBehaviour
     [SerializeField]
     float velMod = 0f;
 
+    Renderer spaceRenderer;
+
     GameObject Carrier;     //declaring these handles to use below. I'm getting errors in the editor though, so let me try moving the assignments into Start().
     Rigidbody CarrierRB;    //(cont'd) That worked.
 
@@ -20,10 +23,13 @@ public class bg_scroll : MonoBehaviour
     {
         Carrier = GameObject.Find("Carrier");
         CarrierRB = GameObject.Find("Carrier").GetComponent<Rigidbody>();
+        spaceRenderer = GetComponent<Renderer>();
+        
     }
 
     void Update()
     {
+        
         if (CarrierRB.linearVelocity.z > 0)
         {
             velMod = CarrierRB.linearVelocity.z * 0.01f;    //increase the rate of illusory speed by a fraction of the actual speed
