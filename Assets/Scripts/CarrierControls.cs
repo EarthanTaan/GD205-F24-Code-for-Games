@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,11 +18,31 @@ public class CarrierControls : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         righted = transform.rotation;        //grab the Vector3 for when the ship is at neutral rotation
+
     }
 
     void FixedUpdate()
     {
-        transform.Translate(0,0,Time.deltaTime * 3f);       // "At rest", the ship moves forward constantly at a slow pace.
+        if (Time.time < 3)
+        {
+            Material starField = GameObject.Find("Space_BG").GetComponent<MeshRenderer>().material;     // get the material from the starfield plane
+            Vector2 starFieldOffset = starField.mainTextureOffset;                                      // pull out the main texture offset and give it a handle
+            starFieldOffset.y += Time.deltaTime;                                                    //spike the y axis of the offset for a lightspeed vibe                                                            
+            starField.mainTextureOffset = starFieldOffset;                                              //shove the adjust(ing) parameter back into the machine
+        }
+        else if (Time.time > 3)
+        {
+            if (transform.position.z < 100)
+            {
+                Vector3 currentPos = transform.position;
+                currentPos.z = Mathf.Lerp(currentPos.z, 100, Time.deltaTime * 5f);
+                transform.position = currentPos;
+            }
+            GameObject shipSkin = GameObject.Find("Renegade Hope MkIV");
+            shipSkin.transform.localPosition = Vector3.Lerp(shipSkin.transform.localPosition, new Vector3(0, 0, 0), Time.deltaTime);
+        }
+
+        transform.Translate(0, 0, Time.deltaTime * 3f);       // "At rest", the ship moves forward constantly at a slow pace.
 
         if (transform.eulerAngles.z != 0f && !Input.anyKeyDown)     //if the z-axis rotation is anything but neutral, and no key is being pressed:
         {
@@ -69,6 +91,11 @@ public class CarrierControls : MonoBehaviour
     /* Write a function here that will handle the intro cutscene, showing the space station wreckage.
      * After panning past the wreck, move the player's ship onto the screen, and turn control over to the input controls.
      * Ideally, then enemies would begin spawning, but I have no clue how to even begin setting THAT up. Set up a custom class maybe?
+     * 
+     * Or maybe I'm doing it the other way around - all the code I wrote directly into Update() can become the ControlsLive() function, and I can put the cutscene code
+     * in Update and have it call ControlsLive() when it's finished...?
     */
+
+
 
 } // This line is outside the scope of the MonoBehavior; don't code here or below. This is the bottom of the script.
