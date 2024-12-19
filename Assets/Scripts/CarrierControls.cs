@@ -23,14 +23,14 @@ public class CarrierControls : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Time.time < 3)
+        if (Time.fixedTime < 3)
         {
             Material starField = GameObject.Find("Space_BG").GetComponent<MeshRenderer>().material;     // get the material from the starfield plane
             Vector2 starFieldOffset = starField.mainTextureOffset;                                      // pull out the main texture offset and give it a handle
             starFieldOffset.y += Time.deltaTime;                                                    //spike the y axis of the offset for a lightspeed vibe                                                            
             starField.mainTextureOffset = starFieldOffset;                                              //shove the adjust(ing) parameter back into the machine
         }
-        else if (Time.time > 3)
+        else if (Time.fixedTime > 3)
         {
             if (transform.position.z < 100)
             {
